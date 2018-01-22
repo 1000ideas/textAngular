@@ -220,6 +220,10 @@ var validElements = angular.extend({},
                                    optionalEndTagElements,
                                    svgElements);
 
+//  Overwrite  validElements
+var allowedElements = makeMap("a,h1,h2,h3,h4,h5,h6,p,img,i,span,b,em,strong,blockquote,li,ul,ol,pre,br,div");
+var validElements = angular.extend({}, allowedElements);
+
 //Attributes that have href and hence need to be sanitized
 var uriAttrs = makeMap("background,cite,href,longdesc,src,usemap,xlink:href");
 
@@ -539,7 +543,7 @@ function validStyles(styleAttr){
             value === 'underline'
             || value === 'line-through'
         )
-      || 
+      ||
         key === 'font-weight' && (
             value === 'bold'
         )
